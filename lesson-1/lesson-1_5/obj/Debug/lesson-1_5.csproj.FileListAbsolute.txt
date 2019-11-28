@@ -1,0 +1,6 @@
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_5\bin\Debug\lesson-1_5.exe.config
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_5\bin\Debug\lesson-1_5.exe
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_5\bin\Debug\lesson-1_5.pdb
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_5\obj\Debug\lesson-1_5.csprojResolveAssemblyReference.cache
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_5\obj\Debug\lesson-1_5.exe
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_5\obj\Debug\lesson-1_5.pdb

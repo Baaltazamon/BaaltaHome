@@ -1,0 +1,5 @@
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_3\bin\Debug\lesson-1_3.exe.config
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_3\bin\Debug\lesson-1_3.exe
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_3\bin\Debug\lesson-1_3.pdb
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_3\obj\Debug\lesson-1_3.exe
+C:\Users\3gpab\Desktop\c#\lesson-1\lesson-1_3\obj\Debug\lesson-1_3.pdb
