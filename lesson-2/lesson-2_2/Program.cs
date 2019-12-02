@@ -8,6 +8,11 @@ namespace lesson_2_2
 {
     class Program
     {
+        /*
+         * Написать метод подсчета количества цифр числа.
+         * 
+         * Палатов Илья 
+         */
         public static int LengthN(int a)
         {
             int c = 0;

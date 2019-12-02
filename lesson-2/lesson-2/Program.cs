@@ -8,6 +8,12 @@ namespace lesson_2
 {
     class Program
     {
+
+        /*
+         * Написать метод, возвращающий минимальное из трех чисел.
+         * 
+         * Палатов Илья
+         */
         public static double MinMax(double a, double b, double c)
         {
             if (a < b && a < c)
