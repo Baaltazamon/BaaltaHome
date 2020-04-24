@@ -1,0 +1,27 @@
+﻿<Window x:Class="lesson_3_1.send"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lesson_3_1"
+        mc:Ignorable="d"
+        Title="send" Height="347.059" Width="445.378" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label" Content="Получатель" HorizontalAlignment="Left" Margin="12,27,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbMials" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="96,31,0,0" VerticalAlignment="Top" Width="238" SelectedIndex="0"/>
+        <Label x:Name="label1" Content="Тема" HorizontalAlignment="Left" Margin="12,58,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbTo" Height="23" Margin="96,31,103,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbTheme" Height="23" Margin="96,58,103,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbText" Margin="0,96,44,0" TextWrapping="Wrap"/>
+        <Button x:Name="button" Margin="398,96,9,0" Click="button_Click">
+            <TextBlock Text="Отправить" TextWrapping="Wrap"/>
+        </Button>
+        <Button x:Name="btChange" Content="Выбрать" Margin="0,1,103,0" VerticalAlignment="Top" Click="btChange_Click" HorizontalAlignment="Right" Width="79"/>
+
+
+    </Grid>
+</Window>

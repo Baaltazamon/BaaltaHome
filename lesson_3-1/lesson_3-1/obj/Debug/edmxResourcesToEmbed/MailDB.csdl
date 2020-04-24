@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MailModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Mailing" Relationship="MailModel.FK_Mailing_Email" FromRole="Email" ToRole="Mailing" />
+  </EntityType>
+  <EntityContainer Name="MailEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Email" EntityType="Self.Email" />
+    <EntitySet Name="Mailing" EntityType="MailModel.Mailing" />
+    <EntitySet Name="Messeage" EntityType="MailModel.Messeage" />
+    <AssociationSet Name="FK_Mailing_Email" Association="MailModel.FK_Mailing_Email">
+      <End Role="Email" EntitySet="Email" />
+      <End Role="Mailing" EntitySet="Mailing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mailing_Messeage" Association="MailModel.FK_Mailing_Messeage">
+      <End Role="Messeage" EntitySet="Messeage" />
+      <End Role="Mailing" EntitySet="Mailing" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Mailing">
+    <Key>
+      <PropertyRef Name="MailingNumber" />
+    </Key>
+    <Property Name="MailingNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Writing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Recipient" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Email" Relationship="MailModel.FK_Mailing_Email" FromRole="Mailing" ToRole="Email" />
+    <NavigationProperty Name="Messeage" Relationship="MailModel.FK_Mailing_Messeage" FromRole="Mailing" ToRole="Messeage" />
+  </EntityType>
+  <EntityType Name="Messeage">
+    <Key>
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Mailing" Relationship="MailModel.FK_Mailing_Messeage" FromRole="Messeage" ToRole="Mailing" />
+  </EntityType>
+  <Association Name="FK_Mailing_Email">
+    <End Type="MailModel.Email" Role="Email" Multiplicity="1" />
+    <End Type="MailModel.Mailing" Role="Mailing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Email">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Mailing">
+        <PropertyRef Name="Recipient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mailing_Messeage">
+    <End Type="MailModel.Messeage" Role="Messeage" Multiplicity="1" />
+    <End Type="MailModel.Mailing" Role="Mailing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Messeage">
+        <PropertyRef Name="Title" />
+      </Principal>
+      <Dependent Role="Mailing">
+        <PropertyRef Name="Writing" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
