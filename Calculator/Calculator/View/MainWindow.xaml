@@ -1,0 +1,28 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="381.335" Width="354.905" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:MainViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource ViewModel}">
+        <TextBox x:Name="tbA" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding A, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="tbB" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding B, UpdateSourceTrigger=PropertyChanged}" Margin="229,0,0,0" HorizontalAlignment="Left" Width="120"/>
+        <ComboBox x:Name="cbOperation" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Top" Width="109" Height="23" SelectedIndex="0" Text="{Binding Oper, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBoxItem Content="+"/>
+            <ComboBoxItem Content="-"/>
+            <ComboBoxItem Content="*"/>
+            <ComboBoxItem Content="/"/>
+            <ComboBoxItem Content="^"/>
+            <ComboBoxItem Content="√"/>
+            <ComboBoxItem Content="Log"/>
+        </ComboBox>
+        <TextBlock x:Name="tbResult" Height="41" Margin="0,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Text="{Binding Result, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="Calculate" Command="{Binding CalculateCommand}" Margin="0,64,0,0" VerticalAlignment="Top" Height="51" FontSize="14"/>
+
+    </Grid>
+</Window>
