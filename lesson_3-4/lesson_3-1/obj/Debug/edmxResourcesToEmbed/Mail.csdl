@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MailModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MailingMessage" Relationship="Self.FK_Mailing_Email" FromRole="Email" ToRole="MailingMessage" />
+  </EntityType>
+  <EntityType Name="MailingMessage">
+    <Key>
+      <PropertyRef Name="MailingNumber" />
+    </Key>
+    <Property Name="MailingNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Writing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Recipient" Type="Int32" Nullable="false" />
+    <Property Name="DateSending" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Email" Relationship="Self.FK_Mailing_Email" FromRole="MailingMessage" ToRole="Email" />
+    <NavigationProperty Name="Messeage" Relationship="Self.FK_Mailing_Messeage" FromRole="MailingMessage" ToRole="Messeage" />
+  </EntityType>
+  <EntityType Name="Messeage">
+    <Key>
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MailingMessage" Relationship="Self.FK_Mailing_Messeage" FromRole="Messeage" ToRole="MailingMessage" />
+  </EntityType>
+  <Association Name="FK_Mailing_Email">
+    <End Role="Email" Type="Self.Email" Multiplicity="1" />
+    <End Role="MailingMessage" Type="Self.MailingMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Email">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MailingMessage">
+        <PropertyRef Name="Recipient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mailing_Messeage">
+    <End Role="Messeage" Type="Self.Messeage" Multiplicity="1" />
+    <End Role="MailingMessage" Type="Self.MailingMessage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Messeage">
+        <PropertyRef Name="Title" />
+      </Principal>
+      <Dependent Role="MailingMessage">
+        <PropertyRef Name="Writing" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MailEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Email" EntityType="Self.Email" />
+    <EntitySet Name="MailingMessage" EntityType="Self.MailingMessage" />
+    <EntitySet Name="Messeage" EntityType="Self.Messeage" />
+    <AssociationSet Name="FK_Mailing_Email" Association="Self.FK_Mailing_Email">
+      <End Role="Email" EntitySet="Email" />
+      <End Role="MailingMessage" EntitySet="MailingMessage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mailing_Messeage" Association="Self.FK_Mailing_Messeage">
+      <End Role="Messeage" EntitySet="Messeage" />
+      <End Role="MailingMessage" EntitySet="MailingMessage" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

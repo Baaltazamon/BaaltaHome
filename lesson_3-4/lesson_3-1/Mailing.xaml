@@ -1,0 +1,58 @@
+﻿<Window x:Class="lesson_3_1.Mailing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lesson_3_1"
+        mc:Ignorable="d"
+        Title="Mailing" Height="537.131" Width="478.894" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="dgMailing" Height="280" VerticalAlignment="Top" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Сообщение" Binding="{Binding Writing}" Width="0.5*"/>
+                <DataGridTemplateColumn Header="Получатель" Width="0.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Email.Name}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Email.Value}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Дата отправки" Binding="{Binding DateSending}" Width="0.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox x:Name="cbRecipient" HorizontalAlignment="Left" Margin="219,307,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" FontSize="12"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Value}" FontSize="8"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="cbMessage" DisplayMemberPath="Title" HorizontalAlignment="Left" Margin="219,363,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+        <Button x:Name="SaveButton" Content="Добавить" HorizontalAlignment="Left" Margin="354,307,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="354,363,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_1"/>
+        <Calendar x:Name="CldrDateSending" HorizontalAlignment="Left" SelectionMode="MultipleRange" Margin="10,284,0,0" VerticalAlignment="Top" Height="176" Width="173"/>
+        <TextBox x:Name="tbTime" HorizontalAlignment="Left" Height="23" Margin="10,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Text="{Binding Mail.MailingMessage.DateSending, NotifyOnValidationError=True}" PreviewTextInput="TextBox_PreviewTextInput" Validation.Error="tbTime_Error"/>
+        <Button HorizontalAlignment="Left" Margin="108,459,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2" Height="30">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="img/song.png" Height="18" Width="21"/>
+                <TextBlock Text="ОК"/>
+            </StackPanel>
+            
+        </Button>
+        <Button x:Name="Run" HorizontalAlignment="Left" Margin="219,418,0,0" VerticalAlignment="Top" Width="224" Height="80" Click="Button_Click_3">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="img/winR.png" Height="39" Width="42"/>
+                <TextBlock Text="Выполнить!" Margin="20,10,0,0"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Window>

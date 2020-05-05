@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MailModelContainer" CdmEntityContainer="MailEntities">
+    <EntitySetMapping Name="Email">
+      <EntityTypeMapping TypeName="MailModel.Email">
+        <MappingFragment StoreEntitySet="Email">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mailing">
+      <EntityTypeMapping TypeName="MailModel.Mailing">
+        <MappingFragment StoreEntitySet="Mailing">
+          <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+          <ScalarProperty Name="Writing" ColumnName="Writing" />
+          <ScalarProperty Name="MailingNumber" ColumnName="MailingNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messeage">
+      <EntityTypeMapping TypeName="MailModel.Messeage">
+        <MappingFragment StoreEntitySet="Messeage">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
